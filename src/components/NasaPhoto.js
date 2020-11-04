@@ -1,5 +1,5 @@
 import React from "react";
-//component takes in the axios request as props to then render to the page on App
+//component takes in the axios request as props to then render to the page
 export default function NasaPhoto(props) {
   return (
     <div>

@@ -29,6 +29,7 @@ function App() {
       .get(`${API_LINK}&date=2020-11-03`)
       .then((res) => {
         const oldApiData = res.data;
+        console.log(oldApiData)
         setOldNasaPhoto(oldApiData);
       })
       .catch((err) => {
