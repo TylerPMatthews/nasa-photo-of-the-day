@@ -3,9 +3,50 @@ import "./App.css";
 import axios from "axios";
 import { API_LINK } from "./constants/index";
 import NasaPhoto from "./components/NasaPhoto";
-import oldNasaPhoto from "./components/OldNasaPhoto";
 import OldNasaPhoto from "./components/OldNasaPhoto";
+import styled from "styled-components";
 
+const StyledApp = styled.div`
+h2{
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+}
+p{
+  margin-right:25%;
+  margin-left:25%;
+
+}
+
+button{
+  margin-bottom:5%;
+}
+
+
+
+
+
+
+`;
 function App() {
   //set initilal state of the Nasa photo
   const [nasaPhoto, setNasaPhoto] = useState(true);
@@ -29,7 +70,7 @@ function App() {
       .get(`${API_LINK}&date=2020-11-03`)
       .then((res) => {
         const oldApiData = res.data;
-        console.log(oldApiData)
+        console.log(oldApiData);
         setOldNasaPhoto(oldApiData);
       })
       .catch((err) => {
@@ -59,8 +100,20 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <StyledApp className="App">
       <h2>Nasa Photo Of The Day!</h2>
+      <div className='box'> 
+        <div className='inner'>
+          <span>
+        NASA
+          </span>
+        </div>
+        <div className='inner'>
+          <span>
+          NASA
+          </span>
+        </div>
+      </div>
       <div className="nasa">
         <NasaPhoto nasaPhoto={nasaPhoto} />
       </div>
@@ -78,7 +131,7 @@ function App() {
       >
         Yesterday
       </button>
-    </div>
+    </StyledApp>
   );
 }
 
